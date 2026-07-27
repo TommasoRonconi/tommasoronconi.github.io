@@ -2,115 +2,158 @@ schema: hugoblox/author/v1
 slug: me
 is_owner: true
 name:
-  display: Dr. Alex Johnson
-  given: Alex
-  family: Johnson
-  alternate: ''  # Example: 王伟
-  pronunciation: ''  # Example: Wáng Wěi
+  display: Tommaso Ronconi
+  given: Tommaso
+  family: Ronconi
+  alternate: ''
+  pronunciation: ''
   pronouns: he/him
 postnominals:
   - PhD
-  - MIEEE
 status:
-  icon: "☕️"
-role: Senior AI Research Scientist
+  icon: ""
+role: Fixed-Term Researcher · HPC Expert
+
+# ── Short bio shown under your name on the homepage ─────────────────────────
+# Structural dual message: scientist AND software engineer AND team lead,
+# stated through evidence rather than self-assessment.
 bio: |
-  Alex Johnson is a Senior AI Research Scientist at Meta AI. His research
-  has been published in top conferences like NeurIPS and ICML, with over
-  10,000 citations. Alex is passionate about pushing the boundaries of AI
-  while ensuring ethical development.
+  Tommaso Ronconi is a researcher at the Italian ALMA Regional Center in Bologna, based
+  at INAF's Institute of Radioastronomy, where he works as an HPC
+  expert. His research spans galaxy formation and evolution and large-scale-
+  structure cosmology for modern surveys and experiments (i.e. SKAO, Euclid, ET) — from panchromatic SED
+  modelling and Bayesian inference to full-sky mock light-cones. He is the
+  author and maintainer of several open-source scientific packages (GalaPy,
+  SCAMPy, and contributions to T-RECS and CosmoBolognaLib), built on a C++/
+  Python and high-performance-computing foundation. He currently leads the
+  science-platform prototyping work package for the ESO ALMA support-centre
+  development plan and has supervised three graduate students.
 
 affiliations:
-  - name: Meta AI
-    url: https://ai.meta.com/
+  - name: INAF – Institute of Radioastronomy (Italian ALMA Regional Center)
+    url: 'https://info.ira.inaf.it/en/'
 
+# ── Links ───────────────────────────────────────────────────────────────────
+# REAL links below are filled. Commented links are placeholders you must fill
+# in — they are left commented so the site never shows a broken/fake link.
 links:
   - icon: at-symbol
-    url: mailto:alex.johnson@example.com
-    label: E-mail Me
-  - icon: brands/x
-    url: https://x.com/example
+    url: mailto:tommaso.ronconi@inaf.it
+    label: E-mail
   - icon: brands/github
-    url: https://github.com/example
-  - icon: brands/linkedin
-    url: https://www.linkedin.com/in/example/
-  - icon: academicons/google-scholar
-    url: https://scholar.google.com/citations?user=example
+    url: https://github.com/TommasoRonconi
   - icon: academicons/orcid
-    url: https://orcid.org/0000-0002-1825-0097
+    url: https://orcid.org/0000-0002-3515-6801
+  - icon: academicons/ads
+    url: https://ui.adsabs.harvard.edu/user/libraries/XJDMhO5gSxyfxhrsKdDR0Q
+  # - icon: academicons/google-scholar
+  #   url: https://scholar.google.com/citations?user=XXXX        # TODO: add Scholar ID (if you have one)
+  # - icon: brands/linkedin
+  #   url: https://www.linkedin.com/in/XXXX/          # TODO: add LinkedIn (relevant for the industry-exit case)
 
 interests:
-  - Large Language Models
-  - Computer Vision
-  - Reinforcement Learning
-  - AI Ethics
+  - Galaxy formation & evolution
+  - Panchromatic SED modelling
+  - Bayesian inference
+  - Full-sky mock light-cones
+  - Radio continuum & HI surveys (SKAO)
+  - Optical/NIR surveys (Euclid)
+  - Large-scale-structure cosmology
+  - Scientific software (C++/Python) & HPC
 
+# ── Education (end dates from CV; add start dates to show a range) ────────────
 education:
-  - degree: PhD Computer Science
-    institution: Stanford University
-    start: 2015-09-01
-    end: 2019-06-30
+  - degree: PhD in Astrophysics & Cosmology
+    institution: SISSA — International School for Advanced Studies, Trieste
+    start: 2016-11                     # TODO: verify start date
+    end: 2020-10
     summary: |
-      Thesis on scaling laws for neural language models. Published 5 papers in NeurIPS and ICML.
-    button:
-      text: Download dissertation
-      url: /resume.pdf
-      icon: hero/arrow-down-tray
-  - degree: MS Computer Science
-    institution: Carnegie Mellon University
-    start: 2013-09-01
-    end: 2015-05-31
-  - degree: BS Computer Science
-    institution: MIT
-    start: 2009-09-01
-    end: 2013-05-31
+      Thesis: "From cosmic voids to collapsed structures: HPC methods for
+      Astrophysics and Cosmology." Supervisors: A. Lapi & M. Viel.
+  - degree: Master in High Performance Computing (MHPC)
+    institution: ICTP / SISSA, Trieste
+    start: 2018-09                     # TODO: verify start date
+    end: 2019-12
+    summary: |
+      Final project: Rebuild & optimisation of a library for mock-galaxy
+      catalogue building. Supervisors: A. Sartori, A. Lapi & M. Viel.
+  - degree: MSc in Astrophysics & Cosmology
+    institution: Università di Bologna (DiFA)
+    # start: 2013-09                     # TODO: verify start date
+    end: 2016-07
+    summary: |
+      Thesis: "Modelling the size distribution of cosmic voids."
+      Supervisors: L. Moscardini, F. Marulli & M. Baldi.
+  - degree: BSc in Astronomy
+    institution: Università di Bologna (DiFA)
+    end: 2013-03
 
+# ── Experience (all start dates are from the CV) ─────────────────────────────
 experience:
-  - role: Senior AI Research Scientist
-    org: Meta AI
-    start: 2020-01-01
+  - role: Fixed-Term Researcher — HPC Expert
+    org: INAF – Institute of Radioastronomy (Italian ALMA Regional Center)
+    start: 2025-10
     summary: |
-      Leading research on multimodal AI systems. Contributed to Llama 2 and other open-source models.
-    button:
-      text: View portfolio
-      url: /
-      icon: hero/arrow-down-tray
-  - role: AI Research Intern
-    org: OpenAI
-    start: 2019-06-01
-    end: 2019-12-31
+      HPC support for the ALMA Regional Center.
+  - role: Postdoctoral Researcher — Software R&D
+    org: ICSC (Spoke 3) / SISSA
+    start: 2023-05
+    end: 2025-09
     summary: |
-      Worked on GPT-3 scaling. Co-authored paper on prompt engineering.
+      Software research and development.
+  - role: Visiting Researcher
+    org: SKAO Global Headquarters, Manchester (UK)
+    start: 2023-02
+    end: 2023-05
+    summary: |
+      Development of empirical simulations of the radio sky; software
+      assistance. PI: A. Bonaldi.
+  - role: Postdoctoral Researcher
+    org: SISSA — International School for Advanced Studies, Trieste
+    start: 2020-11
+    end: 2023-04
+    summary: |
+      High-performance software tools for modelling the spectral energy
+      distribution of galaxies. PI: A. Lapi.
 
+# ── Skills ───────────────────────────────────────────────────────────────────
+# NOTE: `level` (1–5) is a SELF-RATING. The values below are placeholders —
+# set them to your own honest assessment or delete `level` to hide the bars.
 skills:
-  - name: Technical Skills
+  - name: Languages & Tools
     items:
-      - label: Python
+      - label: C / C++
         level: 5
-      - label: Machine Learning
+      - label: Python / CPython
         level: 5
-      - label: Cloud Computing
+      - label: Fortran
+        level: 3
+      - label: Bash / AWK
         level: 4
-  - name: Research & Communication
+  - name: HPC & Parallel Computing
     items:
-      - label: Academic Writing
+      - label: MPI / OpenMP
         level: 5
-      - label: Conference Presentations
+      - label: CUDA
+        level: 3
+      - label: MKL / GSL / FFTW
         level: 4
-      - label: Grant Proposals
-        level: 4
+  - name: Data & ML
+    items:
+      - label: NumPy / HDF5 / FITS
+        level: 5
+      - label: scikit-learn / PyTorch / TensorFlow / Keras / Pandas
+        level: 3
 
 languages:
-  - name: English
+  - name: Italian
     level: 5
     label: Native
-  - name: Spanish
-    level: 4
+  - name: English
+    level: 5           # TODO: adjust to your honest self-rating
     label: Fluent
 
-awards:
-  - title: Best Paper Award
-    awarder: NeurIPS
-    date: "2022-12-01"
-    summary: Awarded for groundbreaking work on efficient training of large models.
-    icon: hero/trophy
+# ── Awards ───────────────────────────────────────────────────────────────────
+# Your CV lists no formal prizes, so this is left empty (the Awards block will
+# simply not render). Add entries here if you have any honours to show.
+awards: []
