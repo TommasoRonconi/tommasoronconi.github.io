@@ -1,0 +1,147 @@
+---
+title: 'Euclid: Cosmological forecasts from the void size function'
+authors:
+- S. Contarini
+- G. Verza
+- A. Pisani
+- N. Hamaus
+- M. Sahlén
+- C. Carbone
+- S. Dusini
+- F. Marulli
+- L. Moscardini
+- A. Renzi
+- C. Sirignano
+- L. Stanco
+- M. Aubert
+- M. Bonici
+- G. Castignani
+- H.~M. Courtois
+- S. Escoffier
+- D. Guinet
+- A. Kovacs
+- G. Lavaux
+- E. Massara
+- S. Nadathur
+- G. Pollina
+- T. Ronconi
+- F. Ruppin
+- Z. Sakr
+- A. Veropalumbo
+- B.~D. Wandelt
+- A. Amara
+- N. Auricchio
+- M. Baldi
+- D. Bonino
+- E. Branchini
+- M. Brescia
+- J. Brinchmann
+- S. Camera
+- V. Capobianco
+- J. Carretero
+- M. Castellano
+- S. Cavuoti
+- R. Cledassou
+- G. Congedo
+- C.~J. Conselice
+- L. Conversi
+- Y. Copin
+- L. Corcione
+- F. Courbin
+- M. Cropper
+- A. Da Silva
+- H. Degaudenzi
+- F. Dubath
+- C.~A.~J. Duncan
+- X. Dupac
+- A. Ealet
+- S. Farrens
+- S. Ferriol
+- P. Fosalba
+- M. Frailis
+- E. Franceschi
+- B. Garilli
+- W. Gillard
+- B. Gillis
+- C. Giocoli
+- A. Grazian
+- F. Grupp
+- L. Guzzo
+- S. Haugan
+- W. Holmes
+- F. Hormuth
+- K. Jahnke
+- M. Kümmel
+- S. Kermiche
+- A. Kiessling
+- M. Kilbinger
+- M. Kunz
+- H. Kurki-Suonio
+- R. Laureijs
+- S. Ligori
+- P.~B. Lilje
+- I. Lloro
+- E. Maiorano
+- O. Mansutti
+- O. Marggraf
+- K. Markovic
+- R. Massey
+- M. Melchior
+- M. Meneghetti
+- G. Meylan
+- M. Moresco
+- E. Munari
+- S.~M. Niemi
+- C. Padilla
+- S. Paltani
+- F. Pasian
+- K. Pedersen
+- W.~J. Percival
+- V. Pettorino
+- S. Pires
+- G. Polenta
+- M. Poncet
+- L. Popa
+- L. Pozzetti
+- F. Raison
+- J. Rhodes
+- E. Rossetti
+- R. Saglia
+- B. Sartoris
+- P. Schneider
+- A. Secroun
+- G. Seidel
+- G. Sirri
+- C. Surace
+- P. Tallada-Crespı́
+- A.~N. Taylor
+- I. Tereno
+- R. Toledo-Moreo
+- F. Torradeflot
+- E.~A. Valentijn
+- L. Valenziano
+- Y. Wang
+- J. Weller
+- G. Zamorani
+- J. Zoubian
+- S. Andreon
+- D. Maino
+- S. Mei
+date: '2022-11-01'
+publishDate: '2026-07-27T13:02:41.779471Z'
+publication_types:
+- article-journal
+publication: '*åp*'
+doi: 10.1051/0004-6361/202244095
+tags:
+- dark energy
+- 'cosmology: theory'
+- 'galaxies: statistics'
+- catalogs
+- surveys
+- 'methods: data analysis'
+- Astrophysics - Cosmology and Nongalactic Astrophysics
+links:
+- name: arXiv
+  url: https://arxiv.org/abs/2205.11525
+---
