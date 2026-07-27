@@ -39,24 +39,24 @@ sections:
       subtitle: ''
       text: |-
         I work at the intersection of extragalactic astrophysics, large-scale-structure
-	cosmology, and scientific software engineering. My research targets the next
-	generation of cosmological surveys (**SKAO** in the radio and **Euclid** in the
-	optical/near-infrared) where the questions and the datasets are large enough
-	that the modelling and the software are inseparable problems.
-	
-	Three threads run through my work. The first is **galaxy formation and evolution**
-	through panchromatic spectral-energy-distribution modelling, combining physically
-	motivated models with Bayesian inference to recover galaxy properties from
-	multi-band data. The second is **mock skies**: building full-sky, multi-population
-	light-cones that let survey teams test pipelines and forecast constraints before
-	the real data arrive. The third, running underneath both, is **high-performance
-	scientific software** — the C++/Python tools, HPC workflows, and open-source
-	packages that make the science reproducible and fast.
-	
-	I currently lead the science-platform prototyping work package for ESO's ALMA
-	support-centre ALMASPACE development plan, and I contribute to the SKAO Cosmology Science
-	Working Group. I'm always glad to talk about survey simulations, SED modelling,
-	or research software — feel free to get in touch.
+        cosmology, and scientific software engineering. My research targets the next
+        generation of cosmological surveys (**SKAO** in the radio and **Euclid** in the
+        optical/near-infrared) where the questions and the datasets are large enough
+        that the modelling and the software are inseparable problems.
+        
+        Three threads run through my work. The first is **galaxy formation and evolution**
+        through panchromatic spectral-energy-distribution modelling, combining physically
+        motivated models with Bayesian inference to recover galaxy properties from
+        multi-band data. The second is **mock skies**: building full-sky, multi-population
+        light-cones that let survey teams test pipelines and forecast constraints before
+        the real data arrive. The third, running underneath both, is **high-performance
+        scientific software** — the C++/Python tools, HPC workflows, and open-source
+        packages that make the science reproducible and fast.
+        
+        I currently lead the science-platform prototyping work package for ESO's ALMA
+        support-centre ALMASPACE development plan, and I contribute to the SKAO Cosmology Science
+        Working Group. I'm always glad to talk about survey simulations, SED modelling,
+        or research software — feel free to get in touch.
     design:
       columns: '1'
   - block: collection
