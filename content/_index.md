@@ -22,6 +22,19 @@ sections:
     design:
       # Use the new Gradient Mesh which automatically adapts to the selected theme colors
       background:
+      
+        image:
+          filename: hero-bg.png
+          size: cover               # default
+          position: center          # default
+          repeat: no-repeat         # default
+          parallax: true            # scroll effect; on by default for this block
+          filters:                  # all optional
+            brightness: 0.6         # <1 darkens, >1 brightens
+            blur: 4px
+            contrast: 1.1
+            saturate: 0.8
+            grayscale: 0.5
         gradient_mesh:
           enable: true
 
