@@ -65,21 +65,21 @@ interests:
 education:
   - degree: PhD in Astrophysics & Cosmology
     institution: SISSA — International School for Advanced Studies, Trieste
-    start: 2016-11-07                     # TODO: verify start date
+    start: 2016-11-07                     
     end: 2020-10-06
     summary: |
       Thesis: "From cosmic voids to collapsed structures: HPC methods for
       Astrophysics and Cosmology." Supervisors: A. Lapi & M. Viel.
   - degree: Master in High Performance Computing (MHPC)
     institution: ICTP / SISSA, Trieste
-    start: 2018-09-15                     # TODO: verify start date
+    start: 2018-09-15                     
     end: 2019-12-20
     summary: |
       Final project: Rebuild & optimisation of a library for mock-galaxy
       catalogue building. Supervisors: A. Sartori, A. Lapi & M. Viel.
   - degree: MSc in Astrophysics & Cosmology
     institution: Università di Bologna (DiFA)
-    # start: 2013-09-01                     # TODO: verify start date
+    # start: 2013-09-01                     
     end: 2016-07-19
     summary: |
       Thesis: "Modelling the size distribution of cosmic voids."
@@ -135,7 +135,7 @@ skills:
       - label: MPI / OpenMP
         level: 5
       - label: CUDA
-        level: 3
+        level: 2
       - label: MKL / GSL / FFTW
         level: 4
   - name: Data & ML
@@ -156,4 +156,4 @@ languages:
 # ── Awards ───────────────────────────────────────────────────────────────────
 # Your CV lists no formal prizes, so this is left empty (the Awards block will
 # simply not render). Add entries here if you have any honours to show.
-awards: []
+# awards: []
