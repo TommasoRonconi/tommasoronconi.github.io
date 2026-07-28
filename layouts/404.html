@@ -1,0 +1,14 @@
+{{- define "main" -}}
+{{/* Custom 404 — image + shortcuts; excluded from search indexing */}}
+<div data-pagefind-ignore class="flex flex-col justify-center items-center py-12">
+  <article class="container mx-auto prose prose-slate lg:prose-lg dark:prose-invert text-center">
+    <img src="/media/404-not-found.svg" alt="Page not found" class="mx-auto rounded-3xl" style="max-width: 720px; width: 100%;" />
+    <p class="mt-8">This page doesn't exist (or isn't online yet).</p>
+    <p>
+      <a href="{{ site.Home.RelPermalink }}">Home</a> ·
+      <a href="/publications/">Publications</a> ·
+      <a href="/projects/">Software</a>
+    </p>
+  </article>
+</div>
+{{- end -}}
