@@ -1,4 +1,5 @@
 ---
+featured: true
 title: HI Simulations for Cosmology with the SKA Observatory
 authors:
 - Tommaso Ronconi
