@@ -1,4 +1,5 @@
 ---
+featured: true
 title: GalaPy—Implementation strategies of the spectral modelling tool for galaxies
   in Python
 authors:

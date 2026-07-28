@@ -1,4 +1,5 @@
 ---
+featured: true
 title: Cosmic voids uncovered - first-order statistics of depressions in the biased
   density field
 authors:

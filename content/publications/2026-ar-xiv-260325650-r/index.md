@@ -1,4 +1,5 @@
 ---
+featured: true
 title: Painting a full radio sky -- Empirical mock catalogues with multiple source
   populations for future radio surveys
 authors:

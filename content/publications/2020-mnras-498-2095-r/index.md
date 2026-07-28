@@ -1,4 +1,5 @@
 ---
+featured: true
 title: SCAMPY - A sub-halo clustering and abundance matching based PYTHON interface
   for painting galaxies on the dark matter halo/sub-halo hierarchy
 authors:
