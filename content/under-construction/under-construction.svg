@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Page under construction">
+  <!-- Palette: Dracula — bg #282a36, line #44475a, comment #6272a4, fg #f8f8f2,
+       purple #bd93f9, pink #ff79c6, cyan #8be9fd, orange #ffb86c, yellow #f1fa8c -->
+
+  <!-- card background -->
+  <rect x="4" y="4" width="1192" height="667" rx="36" fill="#282a36" stroke="#44475a" stroke-width="4"/>
+
+  <!-- scattered stars -->
+  <g fill="#8be9fd">
+    <circle cx="150" cy="110" r="5"/>
+    <circle cx="1050" cy="90" r="4"/>
+    <circle cx="930" cy="200" r="3.5"/>
+    <circle cx="240" cy="240" r="3"/>
+    <circle cx="1120" cy="300" r="3.5"/>
+    <circle cx="80" cy="380" r="3"/>
+  </g>
+  <g fill="#8be9fd">
+    <path d="M330 90 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6 z"/>
+  </g>
+  <g fill="#f1fa8c">
+    <path d="M990 380 l5 11 11 5 -11 5 -5 11 -5 -11 -11 -5 11 -5 z"/>
+  </g>
+  <g fill="#f1fa8c">
+    <path d="M180 300 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z"/>
+    <path d="M1080 180 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z"/>
+  </g>
+
+  <!-- ringed planet, top right -->
+  <g transform="translate(880,150)">
+    <ellipse cx="0" cy="0" rx="150" ry="44" fill="none" stroke="#8be9fd" stroke-width="14" stroke-linecap="round" opacity="0.45" transform="rotate(-18)"/>
+    <circle cx="0" cy="0" r="80" fill="#bd93f9"/>
+    <circle cx="-28" cy="-18" r="16" fill="#d6bcfa"/>
+    <circle cx="24" cy="22" r="10" fill="#d6bcfa"/>
+    <circle cx="30" cy="-30" r="7" fill="#d6bcfa"/>
+    <path d="M-150 47 A 150 44 0 0 0 150 -47" fill="none" stroke="#8be9fd" stroke-width="14" stroke-linecap="round" transform="rotate(-18)"/>
+  </g>
+
+  <!-- ground hills -->
+  <path d="M4 560 Q 300 500 620 555 T 1196 545 L 1196 635 Q 1196 671 1160 671 L 40 671 Q 4 671 4 635 Z" fill="#44475a"/>
+  <path d="M4 600 Q 250 560 520 600 T 1196 590 L 1196 635 Q 1196 671 1160 671 L 40 671 Q 4 671 4 635 Z" fill="#3b3e50"/>
+
+  <!-- crane lifting a star -->
+  <g stroke-linecap="round">
+    <!-- base -->
+    <rect x="300" y="540" width="120" height="26" rx="13" fill="#6272a4"/>
+    <!-- mast -->
+    <rect x="345" y="260" width="30" height="290" rx="12" fill="#ffb86c"/>
+    <!-- mast cross-braces -->
+    <g stroke="#e8a35a" stroke-width="8">
+      <line x1="350" y1="300" x2="370" y2="330"/>
+      <line x1="370" y1="300" x2="350" y2="330"/>
+      <line x1="350" y1="370" x2="370" y2="400"/>
+      <line x1="370" y1="370" x2="350" y2="400"/>
+      <line x1="350" y1="440" x2="370" y2="470"/>
+      <line x1="370" y1="440" x2="350" y2="470"/>
+    </g>
+    <!-- jib -->
+    <rect x="345" y="248" width="330" height="24" rx="12" fill="#ffb86c"/>
+    <!-- counter-jib -->
+    <rect x="245" y="248" width="110" height="24" rx="12" fill="#ffb86c"/>
+    <rect x="238" y="240" width="44" height="40" rx="10" fill="#6272a4"/>
+    <!-- cab -->
+    <rect x="330" y="222" width="60" height="46" rx="12" fill="#6272a4"/>
+    <rect x="342" y="232" width="24" height="18" rx="6" fill="#f8f8f2"/>
+    <!-- tie lines -->
+    <g stroke="#f8f8f2" stroke-width="4" opacity="0.65">
+      <line x1="360" y1="226" x2="660" y2="252"/>
+      <line x1="360" y1="226" x2="255" y2="252"/>
+    </g>
+    <!-- cable + hook -->
+    <line x1="640" y1="272" x2="640" y2="380" stroke="#f8f8f2" stroke-width="5"/>
+    <path d="M640 380 q 0 16 12 18" fill="none" stroke="#f8f8f2" stroke-width="6"/>
+    <!-- the moon being lifted -->
+    <g>
+      <circle cx="660" cy="452" r="52" fill="#f1fa8c"/>
+      <circle cx="642" cy="436" r="13" fill="#dce378"/>
+      <circle cx="678" cy="468" r="8" fill="#dce378"/>
+      <circle cx="656" cy="480" r="5" fill="#dce378"/>
+    </g>
+  </g>
+
+  <!-- traffic cone -->
+  <g transform="translate(795,505)">
+    <path d="M0 70 L22 0 Q30 -10 38 0 L60 70 Z" fill="#ffb86c"/>
+    <path d="M10 38 L50 38 L45 22 L15 22 Z" fill="#f8f8f2"/>
+    <rect x="-12" y="66" width="84" height="16" rx="8" fill="#e8a35a"/>
+  </g>
+
+  <!-- striped barrier sign -->
+  <g transform="translate(470,470)">
+    <rect x="12" y="40" width="14" height="70" rx="7" fill="#6272a4"/>
+    <rect x="174" y="40" width="14" height="70" rx="7" fill="#6272a4"/>
+    <g>
+      <rect x="0" y="8" width="200" height="44" rx="12" fill="#f8f8f2"/>
+      <clipPath id="bar"><rect x="0" y="8" width="200" height="44" rx="12"/></clipPath>
+      <g clip-path="url(#bar)">
+        <g fill="#ffb86c">
+          <polygon points="0,52 34,8 62,8 28,52"/>
+          <polygon points="56,52 90,8 118,8 84,52"/>
+          <polygon points="112,52 146,8 174,8 140,52"/>
+          <polygon points="168,52 202,8 230,8 196,52"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- caption -->
+  <text x="600" y="648" font-family="ui-sans-serif, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="6" fill="#6272a4" text-anchor="middle">UNDER CONSTRUCTION</text>
+</svg>
