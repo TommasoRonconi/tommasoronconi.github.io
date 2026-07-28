@@ -18,24 +18,26 @@ role: Fixed-Term Researcher · HPC Expert
 # Structural dual message: scientist AND software engineer AND team lead,
 # stated through evidence rather than self-assessment.
 bio: |
-  Tommaso Ronconi is a researcher at the Italian ALMA Regional Center in Bologna, based
-  at INAF's Institute of Radioastronomy, where he works as an HPC
-  expert. His research spans galaxy formation and evolution and large-scale-
-  structure cosmology for modern surveys and experiments (i.e. SKAO, Euclid, ET) — from panchromatic SED
-  modelling and Bayesian inference to full-sky mock light-cones. He is the
-  author and maintainer of several open-source scientific packages (GalaPy,
-  SCAMPy, and contributions to T-RECS and CosmoBolognaLib), built on a C++/
-  Python and high-performance-computing foundation. He currently leads the
-  science-platform prototyping work package for the ESO ALMA support-centre
-  development plan and has supervised three graduate students.
+  Ciao! I am a researcher in Astrophysics and Cosmology at INAF's
+  Institute of Radioastronomy in Bologna, where I work as HPC expert at the
+  Italian ALMA Regional Center.
+  My research spans galaxy formation and evolution and large-scale-structure
+  cosmology for modern surveys and experiments (i.e. SKAO, Euclid, ET) —
+  from panchromatic SED modelling and Bayesian inference to full-sky mock
+  light-cones. I am the   author and maintainer of several open-source scientific
+  packages (GalaPy, SCAMPy, and contributions to T-RECS and CosmoBolognaLib),
+  built on a C++/Python and high-performance-computing foundation.
+  Currently, I am leading the science-platform prototyping work package for
+  the ESO ALMA support-centre development plan.
+  I have supervised three graduate students and held lectures from the bachelor to
+  the Ph.D. level.
 
 affiliations:
   - name: INAF – Institute of Radioastronomy (Italian ALMA Regional Center)
     url: 'https://info.ira.inaf.it/en/'
 
 # ── Links ───────────────────────────────────────────────────────────────────
-# REAL links below are filled. Commented links are placeholders you must fill
-# in — they are left commented so the site never shows a broken/fake link.
+# REAL links below are filled. Commented links are placeholders
 links:
   - icon: at-symbol
     url: mailto:tommaso.ronconi@inaf.it
@@ -117,8 +119,7 @@ experience:
       distribution of galaxies. PI: A. Lapi.
 
 # ── Skills ───────────────────────────────────────────────────────────────────
-# NOTE: `level` (1–5) is a SELF-RATING. The values below are placeholders —
-# set them to your own honest assessment or delete `level` to hide the bars.
+# NOTE: `level` (1–5) is a SELF-RATING. Delete `level` to hide the bars.
 skills:
   - name: Languages & Tools
     items:
