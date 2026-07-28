@@ -16,9 +16,9 @@ sections:
         text: Download CV
         url: uploads/cv.pdf
       headings:
-        about: ''
-        education: ''
-        interests: ''
+        about: 'About me'
+        education: 'Academic Background'
+        interests: 'Research Areas'
     design:
       # Use the new Gradient Mesh which automatically adapts to the selected theme colors
       background:
