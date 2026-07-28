@@ -1,4 +1,5 @@
 ---
+featured: true
 title: 'GalaPy: A highly optimised C$_++$/Python spectral modelling tool for galaxies.
   I. Library presentation and photometric fitting'
 authors:
