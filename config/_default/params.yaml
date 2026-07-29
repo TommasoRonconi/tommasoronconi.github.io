@@ -163,7 +163,11 @@ hugoblox:
       enable: true
     # Academic citations
     citations:
-      style: apa # apa | mla | chicago | ieee
+      style: apa
+      author_limit: 3            # max authors before "et al."; 0 = show all
+      highlight_author:
+        - 'Tommaso Ronconi'
+        - 'T. Ronconi'
 
   # ────────────────────────────────────────────────────────────────────────────
   # SEARCH

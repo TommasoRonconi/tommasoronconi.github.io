@@ -1,0 +1,127 @@
+{{/*
+  LOCAL OVERRIDE of blox `_partials/views/citation.html`.
+
+  Changes vs. upstream:
+    1. Title is rendered FIRST, on its own line, as the linked heading.
+    2. Author list is TRUNCATED to `author_limit` names, then "et al.".
+    3. Your own name is always shown and bolded, even when it falls past the
+       limit — the middle of the list collapses to an ellipsis:
+           A. One, B. Two, C. Three, … Tommaso Ronconi et al.
+       The ellipsis is omitted when your name is the very next author, and the
+       trailing "et al." is omitted when you are the last author.
+    4. Authors are emitted as plain text when no author page exists (upstream
+       emitted empty <a href=""> links).
+
+  Tunable from config/_default/params.yaml under hugoblox.content.citations:
+      author_limit: 3            # 0 = show every author
+      highlight_author:          # string OR list of name variants
+        - 'Tommaso Ronconi'
+        - 'T. Ronconi'
+
+  Remove this file to fall back to the upstream authors-first citation view.
+*/}}
+
+{{ $item := .item }}
+{{ $year_value := $item.Params.event_start | default $item.Date }}
+{{ $year := (time $year_value).Format "2006" }}
+{{ $has_attachments := partial "functions/has_attachments" $item }}
+{{ $pub := partial "functions/resolve_publication.html" $item }}
+{{ $top_award := "" }}
+{{ with $item.Params.awards }}{{ $top_award = index . 0 }}{{ end }}
+
+{{ $cfg := site.Params.hugoblox.content.citations }}
+{{ $author_limit := 3 }}
+{{ with $cfg.author_limit }}{{ $author_limit = . }}{{ end }}
+{{ $highlight := slice }}
+{{ with $cfg.highlight_author }}
+  {{ if reflect.IsSlice . }}{{ $highlight = . }}{{ else }}{{ $highlight = slice . }}{{ end }}
+{{ end }}
+
+{{/* Normalise the author list */}}
+{{ $authors := $item.Params.authors }}
+{{ if $authors }}
+  {{ if not (reflect.IsSlice $authors) }}{{ $authors = slice $authors }}{{ end }}
+{{ else }}
+  {{ $authors = slice }}
+{{ end }}
+{{ $total := len $authors }}
+
+{{/* Position of the highlighted author (-1 when absent) */}}
+{{ $me_index := -1 }}
+{{ range $i, $a := $authors }}
+  {{ if and (lt $me_index 0) (in $highlight $a) }}{{ $me_index = $i }}{{ end }}
+{{ end }}
+
+{{/* Decide what to show */}}
+{{ $shown := $authors }}
+{{ $ellipsis := false }}
+{{ $append_me := false }}
+{{ $trailing_etal := false }}
+{{ if and (gt $author_limit 0) (gt $total $author_limit) }}
+  {{ $shown = first $author_limit $authors }}
+  {{ if ge $me_index $author_limit }}
+    {{ $append_me = true }}
+    {{ if gt $me_index $author_limit }}{{ $ellipsis = true }}{{ end }}
+    {{ if lt $me_index (sub $total 1) }}{{ $trailing_etal = true }}{{ end }}
+  {{ else }}
+    {{ $trailing_etal = true }}
+  {{ end }}
+{{ end }}
+
+{{/* Flatten into one renderable list */}}
+{{ $render := slice }}
+{{ range $shown }}
+  {{ $render = $render | append (dict "name" . "ellipsis" false) }}
+{{ end }}
+{{ if $ellipsis }}
+  {{ $render = $render | append (dict "name" "" "ellipsis" true) }}
+{{ end }}
+{{ if $append_me }}
+  {{ $render = $render | append (dict "name" (index $authors $me_index) "ellipsis" false) }}
+{{ end }}
+
+<div class="pub-list-item view-citation" style="margin-bottom: 1rem">
+  <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
+
+  {{/* 1 — TITLE */}}
+  <a href="{{ $item.RelPermalink }}" class="font-semibold hover:underline">{{ $item.Title }}</a>
+  {{ with $top_award }}
+    <span class="ml-1">{{ partial "components/award_badge.html" (dict "award" . "page" $item "variant" "inline") }}</span>
+  {{ end }}
+
+  {{/* 2 — AUTHORS, year, journal */}}
+  <div class="article-metadata li-cite-author">
+    {{- range $index, $entry := $render -}}
+      {{- if gt $index 0 }}, {{ end -}}
+      {{- if $entry.ellipsis -}}
+        <span aria-label="additional authors omitted">&hellip;</span>
+      {{- else -}}
+        {{- $raw := $entry.name -}}
+        {{- $slug := $raw | urlize -}}
+        {{- $profile := partial "functions/get_author_profile" (dict "slug" $slug "title" $raw) -}}
+        {{- $termPage := site.GetPage (printf "/authors/%s" $slug) -}}
+        {{- $display := $profile.title | default $raw -}}
+        {{- $is_me := or (in $highlight $raw) (in $highlight $display) -}}
+        {{- $author_url := "" -}}
+        {{- with $termPage }}{{ $author_url = .RelPermalink }}{{ end -}}
+        <span{{ if $is_me }} class="font-bold"{{ end }}>
+          {{- if $author_url -}}
+            <a href="{{ $author_url }}">{{ $display }}</a>
+          {{- else -}}
+            {{ $display }}
+          {{- end -}}
+        </span>
+      {{- end -}}
+    {{- end -}}
+    {{- if $trailing_etal }} et al.{{ end -}}
+    {{- if gt $total 0 }} {{ end -}}
+    ({{- $year -}}).
+    {{ with $pub.display_short }}{{- . | markdownify -}}.{{ end }}
+  </div>
+
+  {{ if $has_attachments }}
+  <div class="flex flex-wrap space-x-3">
+    {{ partial "page_links" (dict "page" $item "is_list" 1) }}
+  </div>
+  {{ end }}
+</div>
