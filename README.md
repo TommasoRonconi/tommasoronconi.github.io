@@ -1,162 +1,247 @@
-# Site build notes — tommasoronconi.github.io
+# Site maintenance notes — tommasoronconi.github.io
 
-Personal reminder for modifying the **HugoBlox Academic CV** template.
-Not rendered by Hugo (root `README.md` is ignored by the build).
+Personal reference for maintaining and extending the site.
+Not rendered by Hugo (the root `README.md` is ignored by the build).
 
-Template: HugoBlox `academic-cv` · Hugo Extended **0.162.0** (pinned in `hugoblox.yaml`).
-Live URL target: <https://tommasoronconi.github.io/>
-
----
-
-## 0 · One-time setup (do these first)
-
-1. **Set the site URL.** `config/_default/hugo.yaml` → change
-   `baseURL: 'https://example.com/'` to `baseURL: 'https://tommasoronconi.github.io/'`.
-2. **Set the site identity.** `config/_default/params.yaml` → under `hugoblox.identity`:
-   set `name: "Tommaso Ronconi"`, a `tagline`, a real `description`, and clear/replace
-   `social.twitter` (leave blank if none).
-3. **GitHub → Settings → Pages → Source = GitHub Actions.** (Not "Deploy from a branch".)
-4. **GitHub → Settings → Actions → General → Workflow permissions = Read and write.**
-   Required so the publications-import Action can open its PR.
-5. **Drop in the author profile:** replace `data/authors/me.yaml` with the filled
-   `me.yaml` I prepared, then complete its `TODO` placeholders (see §5).
-
-After step 1–2 the deploy Action (already present in `.github/workflows/deploy.yml`,
-using `actions/deploy-pages@v4`) will publish on every push to `main`.
+Live: <https://tommasoronconi.github.io/> · Repo: `TommasoRonconi/tommasoronconi.github.io`
 
 ---
 
-## 1 · Keep / replace / delete map
+## 0 · Stack & pinned versions
 
-Everything under `content/` is demo content unless you replace it.
+| Thing | Value | Where |
+|---|---|---|
+| Template | HugoBlox **Academic CV** | `hugoblox.yaml` |
+| Hugo | **Extended 0.162.0** | `hugoblox.yaml` → `build.hugo_version` |
+| Theme module | `HugoBlox/kit/modules/blox` @ `v0.0.0-20260527025321-61f41d3667f1` | `go.mod` |
+| Deploy target | `github-pages` | `hugoblox.yaml` → `deploy.host` |
+| Site URL | `https://tommasoronconi.github.io/` | `config/_default/hugo.yaml` → `baseURL` |
 
-| Path | What it is | Action |
-|------|------------|--------|
-| `data/authors/me.yaml` | **Master profile** — feeds homepage bio + `/experience` page | **Replace** with filled `me.yaml` |
-| `content/_index.md` | Homepage: ordered **blocks** (bio, research, publications, talks, news, CTA) | **Edit** (see §2) |
-| `content/experience.md` | `/experience` page — auto-renders from `me.yaml` | Keep (no edit needed) |
-| `content/publications/_index.md` | Publications listing page (filters/search) | Keep |
-| `content/publications/{conference-paper,journal-article,preprint}/` | Demo papers | **Delete** (before or after import) |
-| `content/projects/{pandas,pytorch,scikit}/` | Demo projects | **Replace** with your packages (see `homepage_snippets.md` §3) |
-| `content/events/example/` | Demo talk | **Replace** with real talks, or delete for now |
-| `content/blog/*` (6 posts) | Demo posts — feed the "News" block | **Delete** (or replace with real news) |
-| `content/courses/*` | HugoBlox tutorial course | **Delete** (see §6 re: Teaching) |
-| `content/slides/example/` | Demo reveal.js slides | Delete unless you'll use slides |
-| `content/authors/_index.md` | Author-pages switch (`render: never`) | Keep as-is |
-| `cta-card` block inside `content/_index.md` | HugoBlox "build your own" promo (`demo: true`) | **Delete** the block |
-| `.github/FUNDING.yml` | Sponsors HugoBlox author | Delete (optional) |
-| `.github/workflows/internal-readme-news.yml` | HugoBlox-internal | Delete (optional) |
-| `.github/workflows/{deploy,build,import-publications,upgrade}.yml` | The machinery | **Keep all** |
-| `netlify.toml` | Netlify config | Harmless; delete if you like (you're on Pages) |
-| `README.md` (template's marketing one) | — | Overwrite with this file |
+Deployment is automatic: push to `main` → `.github/workflows/deploy.yml` builds and
+publishes. GitHub **Settings → Pages → Source** must stay on **GitHub Actions**.
 
----
-
-## 2 · Homepage block order (`content/_index.md`)
-
-Current order of `sections:` and the target:
-
-```
-1. resume-biography-3   → bio/hero (username: me). CV button → uploads/cv.pdf
-2. markdown             → "My Research"  ......... replace text (snippets §1)
-3. collection #papers   → Featured Publications ... keep (needs featured pubs)
-4. collection           → Recent Publications ..... keep
-   >>> INSERT HERE: collection #software (snippets §2)  ← sub-dominant software
-5. collection #talks    → Talks (from events/) .... keep / fill events
-6. collection #news     → News (from blog/) ....... keep / fill or remove
-7. cta-card             → DELETE (HugoBlox promo)
-```
-
-The single change that implements your "engineering visible but sub-dominant"
-decision is inserting the **software collection block after publications** —
-paste-ready in `homepage_snippets.md` §2.
-
----
-
-## 3 · Publications (BibTeX → pages, automated)
-
-The repo ships `.github/workflows/import-publications.yml`. It triggers on a push
-of a file named **`publications.bib` at the repository root**, runs
-`academic import publications.bib content/publications/`, and **opens a PR** with
-the generated page bundles (`index.md` + `cite.bib` per paper). Importer:
-`academic` ≥ 0.10.0 (a.k.a. academic-file-converter / GetRD).
-
-Steps:
-
-1. Rename `TR.bib` → `publications.bib`, place it at the repo **root**, commit, push.
-2. Wait ~1–2 min → review the auto-opened PR (diff of 29 new entries) → merge.
-3. **Delete the 3 demo publication folders** listed in §1.
-4. Open a few generated `content/publications/<id>/index.md` and check the
-   `publication_types:` value the importer wrote — that string drives the type
-   filters on the listing page. (Schema is version-specific; don't hand-write it,
-   trust the importer's output, then tune the filter on `publications/_index.md`
-   if needed.)
-5. **Feature the key papers**: add `featured: true` to the front matter of the
-   ones you want on the homepage. Suggested set (carries science + engineering
-   + current SKAO work without over-weighting software):
-   - `2024A&A...685A.161R` — GalaPy I (A&A)
-   - `2026A&C....5501079R` — GalaPy implementation (A&C)
-   - `2020MNRAS.498.2095R` — SCAMPy (MNRAS)
-   - `2019MNRAS.488.5075R` — Cosmic voids uncovered (MNRAS)
-   - `2026arXiv260325650R` — Painting a full radio sky (SKAO)
-
-Categorisation sanity check: the `.bib` includes 1 `@phdthesis`, 1 `@software`
-(ScamPy ASCL), 1 `@dataset` (VizieR) → these should **not** count as refereed
-articles. The importer types them separately; verify the listing filters keep
-that distinction so the refereed count stays honest.
-
----
-
-## 4 · CV PDF
-
-- Copy your CV to `static/uploads/cv.pdf`.
-- In `content/_index.md`, set the biography button `url: uploads/cv.pdf`.
-- Stable public URL will be `https://tommasoronconi.github.io/uploads/cv.pdf`.
-
-(Optional, later: build the PDF from LaTeX in CI. Not worth it unless you update
-the CV often.)
-
----
-
-## 5 · Placeholders I could NOT fill (need your input)
-
-These are in `me.yaml` marked `TODO`, because they are not in the CV/`.bib` and
-I won't invent them:
-
-- **ORCID iD** — add to `links` (uncomment the block).
-- **Public ADS library URL** — add to `links`.
-- **Google Scholar ID** — add if you maintain one.
-- **LinkedIn URL** — add (matters for the industry-exit audience).
-- **Institution URL** for INAF-IRA affiliation (verify before adding).
-- **Education start dates** — end dates are filled; add starts to show ranges.
-- **Skill `level` values (1–5)** — these are self-ratings; I set placeholders,
-  set your own or delete the `level` keys.
-- **English language level** — confirm/adjust.
-
----
-
-## 6 · Where CV items that don't fit the profile go
-
-`me.yaml` covers education, experience, skills, languages, awards. Not covered:
-
-- **Teaching & mentoring** (your 5+ courses, 3 students): either repurpose the
-  `content/courses/` section, or add a `markdown`/`collection` block. Do **not**
-  leave the HugoBlox tutorial course content in place.
-- **Service** (reviewer for A&A, MNRAS, A&C; SKAO/Euclid membership; WP lead):
-  fold into the bio, the Experience summaries, or a short "Service" markdown block.
-- **Talks** (~30, 7 invited): each goes in `content/events/<slug>/index.md`
-  to populate the Talks block. Replace `content/events/example/`.
-
----
-
-## 7 · Local preview (optional)
-
-Requires Hugo **Extended** 0.162.0 and Node + pnpm.
+### Local preview (optional)
 
 ```bash
-npm install          # or: pnpm install
-npm run dev          # = hugo server --disableFastRender  → http://localhost:1313
+npm install
+npm run dev          # hugo server --disableFastRender → http://localhost:1313
 ```
 
-If you skip local preview, just push to `main` and let the deploy Action build.
-Check progress under the repo's **Actions** tab.
+Needs Hugo **Extended** 0.162.0 and Go installed (Hugo resolves the theme as a Go
+module). If you skip local preview, push and watch the **Actions** tab.
+
+---
+
+## 1 · `layouts/` — local overrides ⚠️ READ BEFORE ANY THEME UPGRADE
+
+Any file in `layouts/` **silently shadows** the same path inside the theme module.
+This is powerful and invisible — when something renders oddly after an upgrade,
+look here first.
+
+| File | Why it exists | On theme upgrade |
+|---|---|---|
+| `_partials/functions/build_links.html` | **BUG PATCH.** Upstream does `{{ $seen.Set "set" (dict) }}`; under Hugo 0.162.0 zero-arg `dict` yields a **nil map**, so the next `SetInMap` aborts the build on *every* page with author-provided `links:`. Patched to `(dict "__init__" true)`. | **Delete and retest.** Once upstream fixes it, this file is dead weight and will freeze an old version of the partial. |
+| `_partials/views/citation.html` | **CUSTOMISATION.** Title-first publication lines, author truncation, always-visible bolded self, no empty `href=""` links. | **Keep**, but re-diff against the new upstream version so you don't lose upstream improvements. |
+| `404.html` | **CUSTOMISATION.** Custom illustrated 404. | Keep. |
+| `_partials/hooks/head-end/github-button.html` | **Shipped with the template** (loads `buttons.github.io`). Not a local addition. | Leave alone, or delete if you never use GitHub star buttons. |
+
+**Upgrade procedure**
+
+```bash
+hugo mod get -u github.com/HugoBlox/kit/modules/blox
+# then: temporarily rename layouts/ → layouts.bak/, build, and see what breaks.
+# Re-introduce overrides one at a time; drop any that upstream has fixed.
+```
+
+---
+
+## 2 · Repo map (current state)
+
+```
+config/_default/
+  hugo.yaml       baseURL; disableAliases: false  ← required for redirects
+  params.yaml     theme mode/pack, header toggles, citations options
+  menus.yaml      nav: Bio · Projects · Experience · Courses · News
+data/authors/
+  me.yaml         MASTER PROFILE — feeds homepage bio AND /experience
+content/
+  _index.md       homepage blocks (bio → My Research → Featured Pubs → Recent Pubs)
+  experience.md   /experience — renders from me.yaml; blocks listed here
+  publications/   29 imported entries (5 featured, each with featured.* image)
+  projects/       galapy/ only so far
+  events/         stub only — reserved for the future calendar page
+  under-construction/  placeholder page + redirect aliases
+  authors/        _index.md with render: never (author pages disabled)
+assets/media/     hero-bg.png · icon.svg · icon.png   ← Hugo asset pipeline
+static/
+  media/404-not-found.svg
+  uploads/cv.pdf  → https://tommasoronconi.github.io/uploads/cv.pdf
+publications.bib  29 entries — SOURCE OF TRUTH for the publication list
+layouts/          see §1
+```
+
+**`assets/media/` vs `static/`** — the distinction matters:
+- `assets/media/` → processed by Hugo (resized, converted to WebP). Backgrounds and
+  the favicon **must** live here or the build errors out.
+- `static/` → copied verbatim, stable public URL. Use for the CV PDF and for images
+  referenced by raw `<img src="/media/...">` (e.g. the 404 artwork).
+
+---
+
+## 3 · Routine tasks
+
+### Add or update publications
+
+`publications.bib` at the repo root is the source of truth.
+
+1. Edit/append entries (ADS BibTeX export).
+2. Commit + push → `.github/workflows/import-publications.yml` fires → opens a PR
+   within ~2 min → review the diff → merge.
+3. Requires **Settings → Actions → General → Workflow permissions = Read and write**
+   (already set; if PRs stop appearing, check this first).
+
+**Before importing, expand ADS journal macros** or journal names render garbled
+(`\aap` → `åp`). Already done for the current file; redo for new entries:
+
+```
+{\aap}   → {Astronomy & Astrophysics}
+{\mnras} → {Monthly Notices of the Royal Astronomical Society}
+{\apj}   → {The Astrophysical Journal}
+{\jcap}  → {Journal of Cosmology and Astroparticle Physics}
+```
+
+⚠️ **Re-importing overwrites existing publication folders.** That destroys
+`featured: true` flags and any `featured.*` images. Either import only new entries,
+or re-apply the five featured flags + images afterwards.
+
+**Featured publications** (5, homepage `article-grid`): add `featured: true` to the
+front matter, and drop any file named `featured.*` into that publication's folder.
+The image also becomes the header of that publication's own page.
+
+### Add a project / software package
+
+Create `content/projects/<name>/index.md`. Model it on `galapy/`.
+Still to add: **SCAMPy**, **T-RECS**, **CosmoBolognaLib**.
+
+### Update the CV
+
+Overwrite `static/uploads/cv.pdf`. The URL is stable and bookmarkable — don't rename.
+
+### Retire the "under construction" placeholder
+
+`content/under-construction/index.md` holds `aliases:` (currently `/teaching/`).
+Menu entries **Courses** and **News** point straight at `/under-construction/`.
+
+When a real section goes live:
+1. Create the real content section.
+2. Remove its URL from `aliases:` (an alias and a real page at the same URL conflict).
+3. Point the menu entry at the real URL in `menus.yaml`.
+
+---
+
+## 4 · Hard-won rules (each one cost a broken build)
+
+1. **`date:` must be a full `YYYY-MM-DD`.** `date: 2026-07` fails with
+   *"not a parsable date"*.
+2. **Every `links:` entry needs a valid `type:`.** Missing or invalid → the build
+   crashes with an `index nil` error. Valid vocabulary:
+   `pdf · preprint · doi · code · dataset · model · slides · video · poster ·
+   project · site · source · bibtex · canonical · crosspost · discussion ·
+   event · calendar · registration · demo`.
+   There is **no `docs` or `pypi` type** — use `type: site` with a `label:`.
+3. **`disableAliases: false`** in `hugo.yaml` — the template ships it as `true`,
+   which silently disables all redirects.
+4. **Background images and favicons must be in `assets/media/`**, not `static/`.
+5. **Demo content can ship in a schema its own pinned theme rejects** — the demo
+   event used the old typeless `links:` format and crashed the build. When in
+   doubt, delete demo content rather than adapting it.
+6. **Favicons and SVGs cache aggressively.** After changing them, hard-reload or use
+   a private window before concluding the change didn't work.
+
+---
+
+## 5 · Current configuration decisions
+
+**Appearance** (`params.yaml`)
+```yaml
+theme:
+  mode: dark          # a DEFAULT, not enforcement — localStorage overrides it
+  pack: "dracula"
+header:
+  theme_toggle: false # hides the day/night button
+  theme_picker: false # hides the theme-pack dropdown
+```
+Both toggles are off so visitors can't leave dark mode. Note: anyone whose browser
+already stored a preference keeps it — clear with
+`localStorage.removeItem("wc-color-theme")`.
+
+**Citations** (`params.yaml`) — consumed by the `citation.html` override
+```yaml
+citations:
+  style: apa
+  author_limit: 3            # 0 = show every author
+  highlight_author:          # BOTH variants needed — the bib uses both
+    - 'Tommaso Ronconi'      # 19 entries
+    - 'T. Ronconi'           # 10 entries
+```
+
+**Palette in use** (Dracula) — reuse these for any new artwork:
+```
+bg #282a36 · line #44475a · muted #6272a4 · fg #f8f8f2
+purple #bd93f9 · cyan #8be9fd · orange #ffb86c · yellow #f1fa8c
+```
+
+---
+
+## 6 · Open items
+
+**Content**
+- [ ] Projects: add SCAMPy, T-RECS, CosmoBolognaLib (only GalaPy exists).
+      Frame T-RECS and CosmoBolognaLib as **contributor** with the specific module
+      you own — both are led by others (Bonaldi; Marulli), and an unqualified
+      "maintainer" is weaker in front of a reviewer than a precise claim.
+- [ ] `me.yaml`: Google Scholar and LinkedIn links still commented out
+      (LinkedIn matters for the industry-exit audience); English level is a
+      placeholder self-rating; MSc/BSc start dates still commented.
+- [ ] 6 bib entries contain LaTeX non-breaking tildes rendering literally
+      (`M.~M. Cueli`). Fix in `publications.bib` (`~` → space) *or* directly in the
+      6 generated `index.md` files — the latter avoids a destructive re-import.
+
+**Structure / navigation**
+- [ ] **No nav entry points to `/publications/`.** The full filterable list of 29 is
+      reachable only by scrolling the homepage. For an audience of academic
+      reviewers this is the most costly omission on the site. One-line fix:
+      ```yaml
+      - name: Publications
+        url: publications/
+        weight: 15
+      ```
+- [ ] Software is **not** on the homepage — it lives only at `/projects/`. The
+      "visible but sub-dominant" plan was a `collection` block placed *after*
+      publications. Optional; add if you want engineering visible without navigating
+      to another page.
+- [ ] `internal-readme-news.yml` and `.github/FUNDING.yml` are HugoBlox-internal —
+      safe to delete.
+
+---
+
+## 7 · Planned: the calendar page
+
+Single page covering **outreach · lecturing · talks · seminars**, replacing the
+removed "Recent & Upcoming Talks" and "Recent News" homepage blocks (currently
+commented out at the bottom of `content/_index.md` — delete them once the calendar
+exists).
+
+Notes for when you build it:
+- `content/events/` already exists as a stub and is the natural home. HugoBlox
+  events support `date_end`, `location`, and `event`-type links — much of the
+  calendar behaviour is already there.
+- Prefer **one collection with a `category:` field** (outreach / teaching / talk /
+  seminar) over separate sections — far easier to maintain, and it allows filtering
+  or colour-coding by category later.
+- ~30 talks (7 invited + 1 colloquium since 2022) and 5+ PhD-level courses are
+  listed in the CV, ready to be transcribed.
+- Wire it up: point the **News** (and/or **Courses**) menu entry at the new URL and
+  remove the corresponding alias from `under-construction/index.md`.
+
+---
