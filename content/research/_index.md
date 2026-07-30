@@ -3,6 +3,11 @@ title: Research
 date: 2026-07-29
 type: landing
 
+ 
+# Show a "Research > <page>" breadcrumb on every child page of this section
+cascade:
+  show_breadcrumb: true
+
 sections:
   - block: markdown
     content:
@@ -21,6 +26,7 @@ sections:
         observable galaxy properties.
     design:
       columns: '1'
+      width: wide
 
   - block: collection
     id: axes
@@ -55,4 +61,5 @@ sections:
         panchromatic SEDs.
     design:
       columns: '1'
+      width: wide
 ---

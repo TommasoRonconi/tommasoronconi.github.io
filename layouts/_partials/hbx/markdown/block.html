@@ -1,0 +1,54 @@
+{{/* Hugo Blox: Markdown */}}
+{{/*
+  LOCAL OVERRIDE of blox `blox/markdown/block.html`.
+
+  Upstream hardcodes `max-w-prose` (~65 characters) on both the outer container
+  and the inner prose div, with no way to configure it — which leaves markdown
+  blocks as a narrow column on wide screens.
+
+  This override adds an optional `design.width`:
+
+      design:
+        width: wide      # prose (default) | wide | full | any CSS length
+
+  Widths are applied as inline styles rather than Tailwind classes on purpose:
+  the theme purges unused utilities via hugo_stats.json, so a class like
+  `max-w-5xl` may not exist in the compiled CSS. Inline styles always apply.
+
+  Default is unchanged (`prose`), so existing markdown blocks render exactly as
+  before unless they opt in.
+*/}}
+
+{{/* Initialise */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ $design := $block.design }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+{{ if not (reflect.IsMap $design) }}{{ $design = dict }}{{ end }}
+{{ $title := "" }}
+{{ with index $content "title" }}{{ $title = printf "%v" . | emojify | $page.RenderString }}{{ end }}
+{{ $text := "" }}
+{{ with index $content "text" }}{{ $text = printf "%v" . | emojify | $page.RenderString | safeHTML }}{{ end }}
+
+{{/* Resolve width */}}
+{{ $width := "prose" }}
+{{ with index $design "width" }}{{ $width = printf "%v" . }}{{ end }}
+{{ $max := "65ch" }}
+{{ if eq $width "prose" }}{{ $max = "65ch" }}
+{{ else if eq $width "wide" }}{{ $max = "56rem" }}
+{{ else if eq $width "wider" }}{{ $max = "72rem" }}
+{{ else if eq $width "full" }}{{ $max = "100%" }}
+{{ else }}{{ $max = $width }}{{ end }}
+
+<div class="flex flex-col items-center mx-auto gap-3 justify-center px-6" style="max-width: {{ $max }}; width: 100%;">
+
+  {{ with $title }}
+  <div class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
+    {{ . }}
+  </div>
+  {{ end }}
+
+  {{/* We use DIV rather than P to support `prose` class and multiple paragraphs */}}
+  {{ with $text }}<div class="prose prose-slate lg:prose-xl dark:prose-invert" style="max-width: none;">{{ . }}</div>{{ end }}
+</div>

@@ -72,6 +72,7 @@ sections:
         or research software — feel free to get in touch.
     design:
       columns: '1'
+      width: wide
   - block: collection
     id: papers
     content:
