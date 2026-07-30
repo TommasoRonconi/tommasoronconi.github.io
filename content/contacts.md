@@ -48,8 +48,10 @@ sections:
       title: Links
       text: |
         **[IDeAS — Associazione IDeAS](https://www.associazioneideas.eu/)**
-	IDeAS (Incontri di Divulgazione e Astrofisica in Sardegna) is a science
-outreach association bringing astrophysics to the public in Sardinia, outside institutional settings. I serve on its executive board.
+        IDeAS (Incontri di Divulgazione e Astrofisica in Sardegna) is a
+        science outreach association bringing astrophysics to the public
+        in Sardinia, outside institutional settings.
+        I serve on its executive board.
 
         **[GitHub — @TommasoRonconi](https://github.com/TommasoRonconi)**
         Source code for the packages I author and maintain, including
