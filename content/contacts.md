@@ -48,8 +48,8 @@ sections:
       title: Links
       text: |
         **[IDeAS — Associazione IDeAS](https://www.associazioneideas.eu/)**
-        FILL: one sentence on what the association does and what your role in it is
-        (see the *Chi siamo* page). Keep it short — two lines at most.
+	IDeAS (Incontri di Divulgazione e Astrofisica in Sardegna) is a science
+outreach association bringing astrophysics to the public in Sardinia, outside institutional settings. I serve on its executive board.
 
         **[GitHub — @TommasoRonconi](https://github.com/TommasoRonconi)**
         Source code for the packages I author and maintain, including
