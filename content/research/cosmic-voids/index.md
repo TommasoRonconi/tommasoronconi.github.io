@@ -42,4 +42,4 @@ three years under our supervision.
 [Contarini, Ronconi et al. 2019](/publications/2019-mnras-488-3526-c/) ·
 [Contarini et al. 2022](/publications/2022-aa-667-a-162-c/)
 
-*Software:* CosmoBolognaLib
+*Software:* CosmoBolognaLib[CosmoBolognaLib](/software/cosmobolognalib/)

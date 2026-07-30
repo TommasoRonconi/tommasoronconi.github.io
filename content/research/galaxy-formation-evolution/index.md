@@ -41,4 +41,4 @@ validated spectroscopic fitting beyond the current photometric mode.
 *Key papers:* [Ronconi et al. 2024](/publications/2024-aa-685-a-161-r/) ·
 [Ronconi & Lapi 2026](/publications/2026-ac-5501079-r/)
 
-*Software:* [GalaPy](/projects/galapy/)
+*Software:* [GalaPy](/software/galapy/)

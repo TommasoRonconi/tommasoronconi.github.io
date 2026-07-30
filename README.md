@@ -68,7 +68,7 @@ content/
   _index.md       homepage blocks (bio → My Research → Featured Pubs → Recent Pubs)
   experience.md   /experience — renders from me.yaml; blocks listed here
   publications/   29 imported entries (5 featured, each with featured.* image)
-  projects/       galapy/ only so far
+  software/       galapy/ only so far
   events/         stub only — reserved for the future calendar page
   under-construction/  placeholder page + redirect aliases
   authors/        _index.md with render: never (author pages disabled)
@@ -120,7 +120,7 @@ The image also becomes the header of that publication's own page.
 
 ### Add a project / software package
 
-Create `content/projects/<name>/index.md`. Model it on `galapy/`.
+Create `content/software/<name>/index.md`. Model it on `galapy/`.
 Still to add: **SCAMPy**, **T-RECS**, **CosmoBolognaLib**.
 
 ### Update the CV
@@ -216,7 +216,7 @@ purple #bd93f9 · cyan #8be9fd · orange #ffb86c · yellow #f1fa8c
         url: publications/
         weight: 15
       ```
-- [ ] Software is **not** on the homepage — it lives only at `/projects/`. The
+- [ ] Software is **not** on the homepage — it lives only at `/software/`. The
       "visible but sub-dominant" plan was a `collection` block placed *after*
       publications. Optional; add if you want engineering visible without navigating
       to another page.

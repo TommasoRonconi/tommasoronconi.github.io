@@ -69,7 +69,7 @@
 {{/* 2) Associated projects (internal) */}}
 {{ with $page.Params.projects }}
   {{ range . }}
-    {{ with (site.GetPage (printf "projects/%s" .)) }}
+    {{ with (site.GetPage (printf "software/%s" .)) }}
       {{ $typeF := "project" }}
       {{ $urlF := .RelPermalink }}
       {{ $keyF := printf "%s::%s" $typeF $urlF }}

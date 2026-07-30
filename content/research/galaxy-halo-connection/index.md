@@ -58,4 +58,4 @@ galaxy–halo connection.
 [Bonaldi, Hartley, Ronconi et al. 2023](/publications/2023-mnras-524-993-b/) ·
 [Ronconi et al. 2026](/publications/2026-ar-xiv-260325650-r/)
 
-*Software:* SCAMPy · T-RECS
+*Software:* [SCAMPy](/software/scampy/) · [T-RECS](/software/trecs/)
