@@ -24,7 +24,7 @@ main:
     weight: 60
   - name: News
     url: /under-construction/
-    weight: 70
+    weight: 70    
   - name: Contacts
-    url: /under-construction/
+    url: contacts/
     weight: 80
