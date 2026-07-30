@@ -11,7 +11,7 @@ sections:
       text: Packages I author, maintain, or contribute to. Each one underpins published research and, in several cases, survey-preparation pipelines for SKAO and Euclid.
       filters:
         folders:
-          - projects
+          - software
       sort_by: Weight
       sort_ascending: true
     design:
