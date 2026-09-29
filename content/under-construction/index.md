@@ -11,8 +11,7 @@ type: page
 # conflict, and the real page silently wins or the alias stomps it depending
 # on build order. Remove each line as the real section goes online.
 aliases:
-  - /teaching/
-#  - /courses/        # example — uncomment/adjust to your actual stub URLs
+  - /news/        # example — uncomment/adjust to your actual stub URLs
 ---
 
 {{< figure src="under-construction.svg" >}}
