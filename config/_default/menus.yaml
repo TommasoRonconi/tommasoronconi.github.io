@@ -17,7 +17,7 @@ main:
     url: software/
     weight: 40
   - name: Teaching
-    url: /under-construction/
+    url: teaching/
     weight: 50
   - name: Experience
     url: experience/
